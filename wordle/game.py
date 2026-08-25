@@ -21,11 +21,10 @@ class GuessResult:
 
         return letters + "\n" + marks
 
-
 def evaluate_guess(secret: str, guess: str) -> GuessResult:
     """Evaluate a guess against the secret word."""
 
-    result = ["absent"] * WORD_LENGTH
+    result = [" "] * WORD_LENGTH
     available_letters = list(secret)
 
     # First pass: correct letters
@@ -76,14 +75,12 @@ class Game:
         for result in self.guesses:
             if result.guess == self.secret:
                 return True
-
         return False
 
     @property
     def is_over(self) -> bool:
         if self.is_won:
             return True
-
         return len(self.guesses) == MAX_GUESSES
            
 
@@ -91,7 +88,7 @@ class Game:
         lines = []
 
         for result in self.guesses:
-            lines.append(str(result))
+            lines.append(str(result))  #Goes through all the guesses and adds each result to the list.
 
         remaining_attempts = MAX_GUESSES - len(self.guesses)
         lines.append(f"Remaining attempts: {remaining_attempts}")

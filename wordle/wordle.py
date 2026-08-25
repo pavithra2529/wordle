@@ -12,11 +12,9 @@ with open("words.txt") as word:
             raise ValueError(f"Invalid word: {clean_word}. ""Every word must be 5 letters.")
 
         words.append(clean_word)
-        words.append(clean_word)
 
 
 secret = random.choice(words)
-print (secret)
 game = Game(secret, words) 
 history = GameHistory()
 
@@ -30,7 +28,7 @@ while not game.is_over:
         print(e)
 
 if game.is_won:
-    attempt= len(game.guesses)
+    attempt = len(game.guesses)
     print(f"You got it in {attempt}/6!")
 else:
     print(f"The word was {secret}")
